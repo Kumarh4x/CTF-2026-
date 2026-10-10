@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    background-color: #0b0f14;
+    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Subtle border and shadow helpers */
+.card-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-bg {
+  background-color: #11161d;
+}
+
+.card-bg-subtle {
+  background-color: #161c24;
+}
+
+/* Modal and CTF victory animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flagPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25), 0 0 30px rgba(6, 182, 212, 0.15);
+    border-color: rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5), 0 0 45px rgba(6, 182, 212, 0.35);
+    border-color: rgba(6, 182, 212, 0.8);
+  }
+}
+
+@keyframes confettiBurst {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(340px) rotate(720deg) scale(0.6);
+  }
+}
+
+.animate-modal-pop {
+  animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-gradient-border {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+.animate-flag-glow {
+  animation: flagPulseGlow 2.5s ease-in-out infinite;
+}
+
+.confetti-particle {
+  position: absolute;
+  top: -10px;
+  animation: confettiBurst 2.5s ease-out forwards;
+  pointer-events: none;
+}
