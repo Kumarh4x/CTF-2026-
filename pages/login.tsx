@@ -21,8 +21,14 @@ export default function Login() {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json();
-      if (res.ok) {
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch {
+        data = { error: 'Authentication failed. Please check your credentials.' };
+      }
+
+      if (res.ok && data.success) {
         router.push('/dashboard');
       } else {
         setError(data.error || 'Authentication failed. Please check your credentials.');
